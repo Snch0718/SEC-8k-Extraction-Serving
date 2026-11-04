@@ -1,0 +1,7 @@
+data/
+*.pt
+*.safetensors
+*.bin
+.env
+__pycache__/
+.venv/
