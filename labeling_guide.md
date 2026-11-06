@@ -23,7 +23,7 @@
 
 - **leadership_change**: the filing announces at least one qualifying event (see below) for a named person.
 - **compensation**: the filing is only about pay, awards, plans or agreements, with no qualifying leadership event. `events` is `[]`.
-- **other**: anything else (for example a plan approval or a filing with no usable content). `events` is `[]`.
+- **other**: anything that is neither a leadership change nor about pay, plans or agreements (for example a filing with no usable content).
 - If a filing has both a leadership event and pay terms, the category is `leadership_change`. Label the leadership events only and ignore the pay terms. (Compensation extraction is out of scope for v1.)
 
 ## What counts as an event
@@ -84,3 +84,13 @@ Rules added while labeling. Format: date, rule.
 - 2026-11-06: Drop nicknames in quotation marks from names (write "Andrew Macdonald", not Andrew "Mac" Macdonald).
 - 2026-11-06: New action `departed` for a departure where the filing does not say resigned, retired or terminated. Never guess a reason.
 - 2026-11-06: "Effective immediately" sets an event's effective_date only when the sentence clearly attaches it to that event. If it could cover several events, use null for the unclear ones.
+- 2026-11-06: An interim role ending is not an event when the person stays at the company.
+- 2026-11-06: The action follows the role type, not the filing's verb. A board seat is `elected` even if the filing says "appointed". An officer role is `appointed`.
+- 2026-11-06: If a filing gives only one date for a past-tense action and no separate effective date, fill event_date and leave effective_date null.
+- 2026-11-06: Equity or incentive plan approvals and amendments are `compensation`, not `other`. `other` is for filings that are neither leadership nor compensation.
+- 2026-11-06: When a person steps down from a role but stays at the company until a later retirement, label the retirement with the retirement date as effective_date and use the title of the role they are leaving.
+- 2026-11-06: Write names as they appear in the filing, keeping middle initials (for example "Daniel S. Tucker"), but without titles such as Mr. or Ms.
+- 2026-11-06: An effective date may be well after the filing date. Record it as stated. Do not leave it null just because it is in the future.
+- 2026-11-06: In titles, write any dash (hyphen, en dash, em dash) as a plain hyphen "-", so one title never has several spellings.
+- 2026-11-06: "Effective immediately" attached to a resignation, retirement or appointment sets effective_date to the same date as event_date. Without that wording or another stated date, effective_date stays null.
+- 2026-11-06: A person who moves to a new, named role is `appointed` to that role, even if they stay at the company. A person who only hands off a role, with no new title in the filing, gets no event. Use the date the filing states for the move, even if it is the last day in the old role.
