@@ -94,3 +94,6 @@ Rules added while labeling. Format: date, rule.
 - 2026-11-06: In titles, write any dash (hyphen, en dash, em dash) as a plain hyphen "-", so one title never has several spellings.
 - 2026-11-06: "Effective immediately" attached to a resignation, retirement or appointment sets effective_date to the same date as event_date. Without that wording or another stated date, effective_date stays null.
 - 2026-11-06: A person who moves to a new, named role is `appointed` to that role, even if they stay at the company. A person who only hands off a role, with no new title in the filing, gets no event. Use the date the filing states for the move, even if it is the last day in the old role.
+- 2026-11-06: Keep name suffixes (Jr., Sr., II, III) as part of the name. Drop nicknames in quotation marks and titles such as Mr., Ms., Dr.
+- 2026-11-06: A phrase like "intends to pursue other opportunities" without the word resign, retire or terminated is `departed`.
+- 2026-11-06: An effective date attached to pay changes (for example "compensation changes effective April 21") is not the effective date of the appointment. Use only the date tied to the role change itself.
