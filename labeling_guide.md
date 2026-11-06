@@ -97,3 +97,13 @@ Rules added while labeling. Format: date, rule.
 - 2026-11-06: Keep name suffixes (Jr., Sr., II, III) as part of the name. Drop nicknames in quotation marks and titles such as Mr., Ms., Dr.
 - 2026-11-06: A phrase like "intends to pursue other opportunities" without the word resign, retire or terminated is `departed`.
 - 2026-11-06: An effective date attached to pay changes (for example "compensation changes effective April 21") is not the effective date of the appointment. Use only the date tied to the role change itself.
+- 2026-11-06: Record dates exactly as the filing states them, even if they look inconsistent (for example an effective date before the approval date). Flag the oddity in the notes field, and do not correct it.
+- 2026-11-06: If one person's roles need different actions (an officer role is `appointed`, a new board seat is `elected`), create one event per action, not one joined event. Rule 4 (join roles with "and") applies only when the action is the same.
+- 2026-11-06: A new title for someone already on the board (Chair, Executive Chair, Lead Independent Director) is `appointed` to that title. `elected` is only for gaining a board seat.
+- 2026-11-06: If the filing defines a term for a date (for example "Transition Date"), resolve it to the actual date.
+- 2026-11-06: If the filing gives only part of a name (for example "D. Adamczyk"), write it exactly as given. Never add details from outside the filing.
+- 2026-11-06: A date tied to something else mentioned in the filing (for example the announcement of a new job elsewhere) is not the event_date.
+- 2026-11-06: "As previously announced/reported" excludes an item only when it is background to a different event. If the filing's main subject is that item taking effect (for example a director's retirement taking effect), it is an event. Test: if you removed this item, would the filing have no news left?
+- 2026-11-06: Added responsibilities without a new title (for example "assumed responsibility for...") are not an event. Only a new named title or board seat counts.
+- 2026-11-06: Drop nicknames whether they are in quotation marks or in parentheses.
+- 2026-11-06: "On or about [date]" counts as that date. Enter it and mention the hedge in the notes. Partial dates (month and year only) are still null.
