@@ -90,7 +90,7 @@ def extract_item_section(text: str, item: str):
         return text, False
     rest = text[start.start():]
     head_len = len(start.group(0))
-    end = re.search(r"^\s*(Item\.?\s+\d\.\d{2}\b|SIGNATURES?\b)", rest[head_len:], re.I | re.M)
+    end = re.search(r"^\s*(Item\.?\s+\d\.\d{2}\b|Section\s+\d+\s*[-–—]|SIGNATURES?\b)", rest[head_len:], re.I | re.M)
     section = rest[: head_len + end.start()] if end else rest
     return section.strip(), True
 
