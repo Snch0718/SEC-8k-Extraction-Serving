@@ -11,7 +11,7 @@
     {
       "who": "full name of the person",
       "role": "title or board seat as written",
-      "action": "appointed | elected | resigned | retired | terminated | not_standing_for_reelection",
+      "action": "appointed | elected | resigned | retired | terminated | not_standing_for_reelection | departed",
       "event_date": "YYYY-MM-DD or null",
       "effective_date": "YYYY-MM-DD or null"
     }
@@ -39,7 +39,7 @@
 
 - **who**: name as written, without titles such as Mr., Ms., Dr.
 - **role**: as written, trimmed. For board seats use "Director" (ignore committee memberships).
-- **action**: `resigned` = person decided to leave (includes "step down"). `retired` = the filing says retire. `terminated` = the company ended the employment or removed the person. `appointed` = officer role. `elected` = board seat. `not_standing_for_reelection` = director will not stand for another term.
+- **action**: `resigned` = person decided to leave (includes "step down"). `retired` = the filing says retire. `terminated` = the company ended the employment or removed the person. `appointed` = officer role. `elected` = board seat. `not_standing_for_reelection` = director will not stand for another term. `departed` = the filing says the person is leaving or has left, but doesn't say whether by resignation, retirement or termination.
 - **event_date**: the date the decision, notice or approval happened, if the filing gives one.
 - **effective_date**: the date the change takes effect. Use `null` if it is conditional or not stated. Partial dates (month and year only) become `null`.
 - When unsure, use `null` instead of guessing, and add a note in the labeling sheet (not in the JSON).
@@ -69,3 +69,18 @@
 1. Label the test set yourself, before looking at any model output.
 2. Re-label 20 of those filings two days later without looking at your first answers. Report how often the two passes agree. That agreement is a ceiling on any model's score.
 3. Record every rule you had to invent as a new line in this guide, with the date.
+
+## Rule log
+
+Rules added while labeling. Format: date, rule.
+
+- 2026-11-06: Write "&" in titles as "and" (for example "Co-President and Chief Investment Officer"), so one title never has two spellings.
+- 2026-11-06: Ignore line breaks in the text. A title split across lines is written as one line.
+- 2026-11-06: Biography sentences (age, education, past roles, earlier appointments) are background. Never label them, and give no event to people mentioned only in passing.
+- 2026-11-06: Succession: if a filing says person A hands a role to person B, label B as `appointed`. Label A only if the filing also says A leaves the company (`resigned`, `retired` or `terminated`). Moving to other duties is not a departure.
+- 2026-11-06: A future departure counts as an event if the filing states it as definite and is the one announcing it, even without a date (`effective_date` is null). It does not count if it is only mentioned as the reason for something else, or if it is hedged ("may", "expects to consider").
+- 2026-11-06: When a person keeps other duties, use the title of the role being changed, as written in the filing.
+- 2026-11-06: event_date is only filled when the filing gives a date for that person’s own decision, notice or announcement. Do not copy another person’s date onto a successor’s event. Use null instead.
+- 2026-11-06: Drop nicknames in quotation marks from names (write "Andrew Macdonald", not Andrew "Mac" Macdonald).
+- 2026-11-06: New action `departed` for a departure where the filing does not say resigned, retired or terminated. Never guess a reason.
+- 2026-11-06: "Effective immediately" sets an event's effective_date only when the sentence clearly attaches it to that event. If it could cover several events, use null for the unclear ones.

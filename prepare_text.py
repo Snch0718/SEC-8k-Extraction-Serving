@@ -85,12 +85,12 @@ def html_to_text(raw: bytes, suffix: str) -> str:
 
 def extract_item_section(text: str, item: str):
     """Return (section_text, found). Falls back to the full text if the heading is not found."""
-    start = re.search(rf"^\s*Item\s+{re.escape(item)}\b", text, re.I | re.M)
+    start = re.search(rf"^\s*Item\.?\s+{re.escape(item)}\b", text, re.I | re.M)
     if not start:
         return text, False
     rest = text[start.start():]
     head_len = len(start.group(0))
-    end = re.search(r"^\s*(Item\s+\d\.\d{2}\b|SIGNATURES?\b)", rest[head_len:], re.I | re.M)
+    end = re.search(r"^\s*(Item\.?\s+\d\.\d{2}\b|SIGNATURES?\b)", rest[head_len:], re.I | re.M)
     section = rest[: head_len + end.start()] if end else rest
     return section.strip(), True
 
