@@ -107,3 +107,8 @@ Rules added while labeling. Format: date, rule.
 - 2026-11-06: Added responsibilities without a new title (for example "assumed responsibility for...") are not an event. Only a new named title or board seat counts.
 - 2026-11-06: Drop nicknames whether they are in quotation marks or in parentheses.
 - 2026-11-06: "On or about [date]" counts as that date. Enter it and mention the hedge in the notes. Partial dates (month and year only) are still null.
+- 2026-11-09: Rule 4 (join roles with "and") applies only when the action and both dates are the same. If one person leaves several roles with different effective dates, create one event per role.
+- 2026-11-09: When someone steps down from a role and leaves the company later, effective_date is the date they leave the company if the filing gives a full date (Southern Company, Marriott). If that later date is only partial (for example "first quarter of 2026") and the filing gives a full date for the retirement from the role, use the full date.
+- 2026-11-09: Drop ranks and honorifics (Admiral, General, Dr., Hon.) and trailing descriptions such as "U.S. Navy, Retired" from names. Keep middle initials and suffixes like Jr. or III.
+- 2026-11-09: In `role`, leave out committee memberships added to a title (for example "and member of the Executive Committee"). Keep only the officer title.
+- 2026-11-09: effective_date for a retirement or departure is the date the filing attaches to that action ("retire ... effective May 19"). If the filing attaches no date to the action itself, use the date the person leaves the company. This replaces the earlier "date they leave the company" rule.
