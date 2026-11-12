@@ -115,3 +115,10 @@ Rules added while labeling. Format: date, rule.
 - 2026-11-09: If a person steps down from an officer role but remains with the company in an advisory capacity, do not label a departure event unless the filing also states that they are leaving the company. Advisory service alone does not count as a new named leadership role.
 - 2026-11-09: When a person retires from employee status but continues serving as a director, do not label a separate company departure or retirement event if no other qualifying leadership role is being left.
 - 2026-11-09: When a filing announces several definite leadership appointments effective on the same future date, label each person's new named role separately. Do not create departure events for their previous roles unless the filing explicitly states they are leaving those roles or the company.
+- 2026-11-12: The filing date or report date is never an `event_date`. Use only a date the text attaches to that person's own decision, notice or announcement.
+- 2026-11-12: `event_date` is never copied from another person's event or from `effective_date`. Fill it only when the filing attaches a date to that person's own decision, notice or announcement.
+- 2026-11-12: The filing date or report date is never an `event_date`.
+- 2026-11-12: A trailing "effective immediately" applies to every event in the same sentence.
+- 2026-11-12: An interim title counts as a named title, so an interim appointment is `appointed`.
+- 2026-11-12: Keep a peer's title as the name ("Lord Hill of Oareford"). Drop a leading "the" and post-nominal letters such as CBE.
+- 2026-11-12: Plan approvals and amendments are `compensation`, never `other`. A temporary leave with no new title is `other`.
